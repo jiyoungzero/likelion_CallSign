@@ -1,9 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-def showmain(request):
-    return render(request, 'main/mainpage.html')
+def landing(request):
+    return render(request, 'main/landing.html')
 
-
-# def showposting(request):
-#     return render(request, 'main/')
