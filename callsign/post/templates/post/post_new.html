@@ -1,6 +1,6 @@
 <h1>새 방 파는 곳</h1> 
 
-{% comment %} <section class="new">
+<section class="new">
     <div class="question"><h1>질문하기</h1></div>
     <form action="{%url 'qna:major_create'%}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
@@ -31,4 +31,4 @@
             <button type="submit" style="border: none;"><a class="btn btn-orange">물어보기</a></button>		
         </div>
     </form>
-</section> {% endcomment %}
+</section>
