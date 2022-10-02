@@ -1,26 +1,32 @@
 from django.db import models
 
-from django.urls import reverse
-
 # Create your models here.
-class Category(models.Model):
 
-    name = models.CharField(max_length=20)
+# 성별 
+# 운동 
+# 모집인원
+# 운동할날짜
 
-    def __str__(self):
-        return self.name
-
-    # def get_absolute_url(self):
-    #     return reverse("home")
-
-
+# class Post(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     title = models.CharField(max_length=80)
+#     writer = models.CharField(max_length=80)
+    
+#     body = models.TextField()
 class Post(models.Model):
-    category = models.CharField(max_length=30, default="축구")
-    title = models.CharField(max_length=80)
-    # writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=200)
+    pub_date = models.DateTimeField()
     body = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
+    pub_date = models.DateTimeField(auto_now=True, verbose_name="등록(수정)일")
+    # major = models.ForeignKey(Major, on_delete=models.CASCADE, blank=True, null=True)
+   
     def __str__(self):
-        return self.title[:20]
+        return self.title
+    
+    def summary(self):
+        return self.body[:20]
+
+
+
+

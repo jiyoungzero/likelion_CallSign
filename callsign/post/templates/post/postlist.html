@@ -1,7 +1,79 @@
-<h1>방 리스트 보여주는 곳 </h1>
-{% comment %} <ul>
-    {% for category in categories %}
-        <li>{{category.name}}11</li>
-    {% endfor %}
-</ul> {% endcomment %}
+<h1>운동 별 리스트 보여주는 곳(기본으로 축구를 보여줌) : CallSign</h1>
 <button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
+<div class="nav_container">
+
+      <div class="container">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >축구</a>
+              
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >농구</a>
+              
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >배구</a>
+              
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >야구</a>
+              
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >테니스</a>
+              
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >배드민턴</a>
+              
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href=""
+                >산책/러닝</a>
+              
+            </li>
+            
+  
+      </div>
+  </div>
+
+
+<hr>
+
+<div>
+  {% for post in posts %}
+  <div>
+    <h3>{{post.title}}</h3>
+    {{post.summary}}
+    <a href = "{%url 'post:post_detail' post.id%}">참여하기</a>
+  </div>
+  {% endfor %}
+</div>
+
