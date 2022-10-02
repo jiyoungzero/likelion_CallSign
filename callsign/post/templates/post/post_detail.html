@@ -2,3 +2,6 @@
 날짜 : {{post.pub_date}}
 <hr>
 <p>{{post.body}}</p>
+
+<a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
+<a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
