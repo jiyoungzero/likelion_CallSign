@@ -17,29 +17,39 @@ def post_detail(request, id):
 
 def post_new(request):
     exercise = Exercise.objects.all()
-    return render(request, 'post/post_new.html', {'exercise': exercise})
+    sex = Sex.objects.all()
+    return render(request, 'post/post_new.html', {'exercise': exercise, "sex":sex})
 
 def post_create(request):
     new_post = Post()
     new_post.title = request.POST['title']
     new_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
+    new_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     # new_post.writer
     new_post.pub_date = timezone.now()
     new_post.body = request.POST['body']
     new_post.save()
     return redirect('post:post_detail', new_post.id)
 
+
 def post_edit(request, id):
     edit_post = Post.objects.get(id = id)
-    return render(request, 'post/post_edit.html', {'post': edit_post})
+    sex = Sex.objects.all()
+    exercise = Exercise.objects.all()
+    return render(request, 'post/post_edit.html', {'post': edit_post,  'sex':sex, 'exercise': exercise})
+
 
 def post_update(request, id):
     update_post = Post()
+    
     update_post.title = request.POST['title']
+    update_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
+    update_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
     # new_post.writer
     update_post.pub_date = timezone.now()
     update_post.body = request.POST['body']
     update_post.save()
+    
     return redirect('post:post_detail', update_post.id)
 
 def post_delete(request, id):
