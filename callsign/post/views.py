@@ -23,6 +23,7 @@ def post_new(request):
 def post_create(request):
     new_post = Post()
     new_post.title = request.POST['title']
+    new_post.url = request.POST['url']
     new_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
     new_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     # new_post.writer
@@ -43,6 +44,7 @@ def post_update(request, id):
     update_post = Post()
     
     update_post.title = request.POST['title']
+    update_post.url = request.POST['url']
     update_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     update_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
     # new_post.writer

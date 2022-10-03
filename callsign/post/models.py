@@ -1,4 +1,5 @@
 from email.policy import default
+from unittest.util import _MAX_LENGTH
 from django.db import models
 
 # Create your models here.
@@ -53,6 +54,7 @@ class Sex(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
+    url = models.CharField(max_length = 300, default="")
     pub_date = models.DateTimeField()
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now=True, verbose_name="등록(수정)일")
