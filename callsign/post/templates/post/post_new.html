@@ -7,17 +7,16 @@
 
     <div class="select_exercise">
         <label for="exercise">
-        운동선택
+        운동선택 :
         </label>
         <select id="exercise" name="exercise">
         <option value="">------ 선택하세요 ------</option>
-        {% for e in exercises %}
-        <option value="">{{ e }} </option>
+        {% for e in exercise %}
+        <option value="{{e.id}}">{{ e.name}} </option>
         {% endfor %}
 
         </select>
     </div>
-
 
 
     <p>

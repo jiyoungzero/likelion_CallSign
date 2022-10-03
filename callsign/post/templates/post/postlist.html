@@ -1,4 +1,4 @@
-<h1>운동 별 리스트 보여주는 곳(기본으로 축구를 보여줌) : CallSign</h1>
+<h1>운동 별 리스트 보여주는 곳(일단 다 모아서 보여줌) : CallSign</h1>
 <button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
 <div class="nav_container">
 
@@ -7,7 +7,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:soccer_list' %}"
                 >축구</a>
               
             </li>
@@ -15,7 +15,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:basketball_list' %}"
                 >농구</a>
               
             </li>
@@ -23,7 +23,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:volleyball_list' %}"
                 >배구</a>
               
             </li>
@@ -31,7 +31,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:baseball_list' %}"
                 >야구</a>
               
             </li>
@@ -39,7 +39,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:tennis_list' %}"
                 >테니스</a>
               
             </li>
@@ -47,7 +47,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:badminton_list' %}"
                 >배드민턴</a>
               
             </li>
@@ -55,9 +55,17 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href=""
+                href="{%url 'post:running_list' %}"
                 >산책/러닝</a>
               
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{%url 'post:etc_list' %}"
+                >기타</a>
             </li>
             
   

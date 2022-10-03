@@ -1,0 +1,10 @@
+<h1>기타 게시글만 보이는 곳</h1>
+<button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
+
+{% for e in etc_list %}
+    <div>
+    <h3>{{e.title}}</h3>
+    {{e.summary}}
+    <a href = "{%url 'post:post_detail' e.id%}">참여하기</a>
+    </div>
+{% endfor %} 

@@ -1,0 +1,10 @@
+<h1>배드민턴 게시글만 보이는 곳</h1>
+<button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
+
+{% for b in badminton_list %}
+    <div>
+    <h3>{{b.title}}</h3>
+    {{b.summary}}
+    <a href = "{%url 'post:post_detail' b.id%}">참여하기</a>
+    </div>
+{% endfor %} 
