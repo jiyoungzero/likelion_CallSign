@@ -1,6 +1,8 @@
 from email.policy import default
 from unittest.util import _MAX_LENGTH
 from django.db import models
+from datetime import datetime, date
+
 
 # Create your models here.
 
@@ -56,6 +58,16 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     url = models.CharField(max_length = 300, default="")
     pub_date = models.DateTimeField()
+    
+    # 같이 운동할 날짜
+    # start_date = models.DateField(auto_now=False, auto_now_add=False)
+    # end_date = models.DateField(auto_now=False, auto_now_add=False)
+
+
+    # def duration(self):
+    #     return self.end_date - self.start_date
+    
+    
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now=True, verbose_name="등록(수정)일")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, blank=True, null=True)
