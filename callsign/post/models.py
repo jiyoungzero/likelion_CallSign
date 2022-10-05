@@ -57,21 +57,20 @@ class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     url = models.CharField(max_length = 300, default="")
-    pub_date = models.DateTimeField()
-    
-    # 같이 운동할 날짜
-    # start_date = models.DateField(auto_now=False, auto_now_add=False)
-    # end_date = models.DateField(auto_now=False, auto_now_add=False)
-
-
-    # def duration(self):
-    #     return self.end_date - self.start_date
-    
-    
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now=True, verbose_name="등록(수정)일")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, blank=True, null=True)
-    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True)
+    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True)    
+    
+    
+    # 같이 운동할 날짜
+    start_date = models.DateField(auto_now=True,editable=True)
+    end_date = models.DateField(auto_now=False,editable=True)
+
+
+    def duration(self):
+        return self.end_date - self.start_date
+
     def __str__(self):
         return self.title
     

@@ -2,15 +2,17 @@
 <form action="{%url 'post:post_update' post.id%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
     <p>제목 : <input type="text" name="title" value = "{{post.title}}"/></p> 
-
+    <p>모집 마감일(📢방장의 권한에 따라 일찍 마감될 수 있습니다.) : <input type="text" name="end_date" placeholder="YYYY-MM-DD 형식이어야 합니다." style="width:230px;" value="{{post.end_date}}"/> * YYYY-MM-DD 형식이어야 합니다.</p> 
     <div class="select_exercise">
       <label for="exercise">
       운동종목 :
       </label>
       <select id="exercise" name="exercise">
-      <option value="{{post.exercise}}">------ 선택하세요 ------</option>
+      <option value="{{e.name}}">{{post.exercise}}</option>
       {% for e in exercise %}
+      {% comment %} {% if e != post.exercise %} {% endcomment %}
       <option value="{{e.id}}">{{ e.name}} </option>
+      {% comment %} {% endif %} {% endcomment %}
       {% endfor %}
 
       </select>
@@ -22,9 +24,11 @@
       성별 :
       </label>
       <select id="sex" name="sex">
-      <option value="{{post.sex}}">------ 선택하세요 ------</option>
+      <option value="{{s.name}}">{{post.sex}}</option>
       {% for s in sex %}
+      {% comment %} {%if s != post.sex %} {% endcomment %}
       <option value="{{s.id}}">{{ s.name}} </option>
+      {% comment %} {% endif %} {% endcomment %}
       {% endfor %}
 
       </select>

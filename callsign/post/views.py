@@ -28,6 +28,10 @@ def post_create(request):
     new_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     # new_post.writer
     new_post.pub_date = timezone.now()
+    
+    # 모집 시작, 마감일 추가
+    new_post.end_date = request.POST['end_date']
+    
     new_post.body = request.POST['body']
     new_post.save()
     return redirect('post:post_detail', new_post.id)
@@ -41,14 +45,27 @@ def post_edit(request, id):
 
 
 def post_update(request, id):
-    update_post = Post()
+    update_post = Post.objects.get(id=id)
     
     update_post.title = request.POST['title']
     update_post.url = request.POST['url']
+    
+    
+    # try :
+    #     update_post.sex = get_object_or_404(Sex, id = request.POST['sex'])
+    # except: 
+    #     update_post.sex = None
+        
+    # try :
+    #     update_post.exercise = get_object_or_404(Exercise, id = request.POST['exercise'])
+    # except: 
+    #     update_post.exercise= None
     update_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     update_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
     # new_post.writer
     update_post.pub_date = timezone.now()
+    update_post.end_date = request.POST['end_date']
+    
     update_post.body = request.POST['body']
     update_post.save()
     

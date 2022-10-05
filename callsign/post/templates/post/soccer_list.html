@@ -5,6 +5,9 @@
     <div>
     <h3>{{s.title}}</h3>
     {{s.summary}}
+    성별 : {{s.sex}}<br>
+    모집마감일 : {{s.end_date}}
     <a href = "{%url 'post:post_detail' s.id%}">참여하기</a>
     </div>
 {% endfor %} 
+
