@@ -7,7 +7,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 def postlist(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('end_date')
+    
     return render(request, 'post/postlist.html', {'posts':posts})
 
 def post_detail(request, id):
