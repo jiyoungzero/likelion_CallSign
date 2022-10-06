@@ -77,8 +77,9 @@
 
 <div>
   {% for post in posts %}
-  
+  {%if post.flag_enddate == False %}
   모집 마감일 - {{post.end_date}}
+  {%endif%}
   <div>
     
     <h3>{{post.title}}</h3>

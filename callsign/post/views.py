@@ -7,15 +7,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 def postlist(request):
-    posts = Post.objects.all().order_by('end_date') # 모집 마감일 급한 것 부터 출력
+    posts = Post.objects.all().order_by('end_date') # 모집 마감일 급한 것 부터 정렬
     enddate_list = []
     
+    # 마감일이 이미 중복으로 존재하면 flag를 True로 변화시켜 출력되지 않게끔 만듦
     for p in posts:
-        enddate_list.append(p.end_date)
-    result = list(set(enddate_list))
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+        
+    # result = list(set(enddate_list))
 
         
-    return render(request, 'post/postlist.html', {'posts':posts ,'result':result})
+    return render(request, 'post/postlist.html', {'posts':posts })
 
 def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)

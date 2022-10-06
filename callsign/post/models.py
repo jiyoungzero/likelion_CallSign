@@ -60,8 +60,9 @@ class Post(models.Model):
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now=True, verbose_name="등록(수정)일")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, blank=True, null=True)
-    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True)    
-    
+    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True) 
+       
+    flag_enddate = models.BooleanField(default=False)
     
     # 같이 운동할 날짜
     start_date = models.DateField(auto_now=True,editable=True)
