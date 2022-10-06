@@ -7,9 +7,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 def postlist(request):
-    posts = Post.objects.all().order_by('end_date')
+    posts = Post.objects.all().order_by('end_date') # 모집 마감일 급한 것 부터 출력
+    enddate_list = []
     
-    return render(request, 'post/postlist.html', {'posts':posts})
+    for p in posts:
+        enddate_list.append(p.end_date)
+    result = list(set(enddate_list))
+
+        
+    return render(request, 'post/postlist.html', {'posts':posts ,'result':result})
 
 def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)

@@ -3,8 +3,9 @@
 모집마감일 : {{post.end_date}}<br>
 운동종목 : {{post.exercise}}<br>
 성별 : {{post.sex}} <br>
-방장님 오픈채팅 url : {{post.url}}
+방장님 오픈채팅 url : {{ post.url|urlize }}
 <hr>
+{% comment %} {{post.url}} {% endcomment %}
 <p>{{post.body}}</p>
 
 <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>

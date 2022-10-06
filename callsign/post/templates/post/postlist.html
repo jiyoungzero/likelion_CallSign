@@ -77,13 +77,16 @@
 
 <div>
   {% for post in posts %}
+  
+  모집 마감일 - {{post.end_date}}
   <div>
+    
     <h3>{{post.title}}</h3>
     {{post.summary}}<br>
     성별 : {{post.sex}}<br>
-    모집마감일 : {{post.end_date}}
     <a href = "{%url 'post:post_detail' post.id%}">참여하기</a>
-  </div>
+  </div><br><br>
   {% endfor %}
+  
 </div>
 
