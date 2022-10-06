@@ -2,11 +2,14 @@
 <button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
 
 {% for t in tennis_list %}
+{%if t.flag_enddate == False %}
+<br>
+모집 마감일 - {{t.end_date}}
+{%endif%}
     <div>
     <h3>{{t.title}}</h3>
     {{t.summary}}
     성별 : {{t.sex}}<br>
-    모집마감일 : {{t.end_date}}
     <a href = "{%url 'post:post_detail' t.id%}">참여하기</a>
     </div>
 {% endfor %} 

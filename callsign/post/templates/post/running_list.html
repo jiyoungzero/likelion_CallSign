@@ -2,11 +2,14 @@
 <button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
 
 {% for r in running_list %}
+{%if r.flag_enddate == False %}
+<br>
+모집 마감일 - {{r.end_date}}
+{%endif%}
     <div>
     <h3>{{r.title}}</h3>
     {{r.summary}}
     성별 : {{r.sex}}<br>
-    모집마감일 : {{r.end_date}}
     <a href = "{%url 'post:post_detail' r.id%}">참여하기</a>
     </div>
 {% endfor %} 
